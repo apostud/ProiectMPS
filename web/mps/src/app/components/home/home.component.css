@@ -3,9 +3,9 @@
   /*background-color: black;*/
   background-image: url("https://images.squarespace-cdn.com/content/v1/5909ffcbdb29d60889f4a6ab/1513945695538-JK7D2V7BUWYL1Y3VCGFY/giphy+%2811%29.gif?format=1500w");
 }
-.home-page .btn{
+.guest {
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
@@ -18,6 +18,22 @@
   border-radius: 5px;
   text-align: center;
 }
+.home-page .login{
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #f1f1f1;
+  color: black;
+  font-size: 16px;
+  padding: 16px 30px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+
 .home-page .btn:hover {
   background-color: black;
   color: white;
