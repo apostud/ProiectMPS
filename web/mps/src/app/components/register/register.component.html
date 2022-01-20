@@ -1,0 +1,37 @@
+<mat-card class="card">
+  <h1 class="title"> CREATE ACCOUNT </h1>
+
+  <form [formGroup]="registerForm">
+    <a>Name</a>
+    <div class="elem">
+      <mat-form-field class="field" appearance="fill">
+        <input matInput formControlName="name">
+      </mat-form-field>
+    </div>
+
+    <a>Email</a>
+    <div class="elem">
+      <mat-form-field class="field" appearance="fill">
+        <input matInput formControlName="email">
+      </mat-form-field>
+    </div>
+
+    <a>Password</a>
+    <div class="elem">
+      <mat-form-field class="field" appearance="fill">
+        <input matInput type="password" formControlName="password">
+      </mat-form-field>
+    </div>
+
+    <a>Re-type Password</a>
+    <div class="elem">
+      <mat-form-field class="field" appearance="fill">
+        <input matInput type="password" formControlName="retypePassword">
+      </mat-form-field>
+    </div>
+
+  </form>
+
+  <button mat-raised-button class="register-button" (click)="onClick()"> Create </button>
+  <a class="errorMessage">{{message}}</a>
+</mat-card>
