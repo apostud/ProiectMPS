@@ -1,17 +1,27 @@
-<div class="home-page">
-  <!--  <button type="button" class="login btn btn-default" [routerLink]="'/login'" >LOGIN</button>-->
-  <button class="login btn btn-default">LOGIN</button>
-  <button class="login btn btn-default">LOGIN</button>
-  <button class="login btn btn-default">LOGIN</button>
-  <button class="login btn btn-default">LOGIN</button>
-  <button class="login btn btn-default">LOGIN</button>
-  <button class="login btn btn-default">LOGIN</button>
-  <button class="login btn btn-default">LOGIN</button>  <button class="login btn btn-default">LOGIN</button>
-  <button class="login btn btn-default">LOGIN</button>
+<mat-card class="card">
+  <h1 class="title">WELCOME</h1>
 
-  <button class="login btn btn-default">LOGIN</button>
+  <form [formGroup]="loginForm">
+    <a>Email</a>
+    <div class="elem1">
+      <mat-form-field class="field" appearance="fill">
+        <input matInput formControlName="email">
+      </mat-form-field>
+    </div>
 
-  <!--  <button type="button" class="guest btn btn-default">PLAY AS GUEST</button>-->
+    <a>Password</a>
+    <div class="elem">
+      <mat-form-field class="field" appearance="fill">
+        <input matInput type="password" formControlName="password">
+      </mat-form-field>
+    </div>
+  </form>
 
-  <!--  <img src="https://thumbs.gfycat.com/ImmenseImpoliteGartersnake-max-1mb.gif">-->
-</div>
+  <button mat-raised-button class="login-button" (click)="onClick()"> Log in </button>
+
+  <div class="crateAccountButton">
+    <a mat-button class="createAccount" (click)="clickCreate()">Create a new account</a>
+  </div>
+  <a class="errorMessage">{{message}}</a>
+
+</mat-card>
