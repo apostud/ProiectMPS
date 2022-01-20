@@ -1,0 +1,35 @@
+.start {
+  background-color: black;
+  height: 10000px;
+}
+.start .room {
+  position: absolute;
+  top: 45%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #ec1100;
+  color: black;
+  text-shadow: 5px 5px 10px black;
+  font-size: 16px;
+  padding: 16px 30px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+
+
+.start .btn:hover {
+  background-color: black;
+  color: white;
+  text-shadow: 2px 2px 5px red;
+}
+
+.rooms {
+  margin-left: 900px;
+  padding-top: 100px;
+  color: white;
+  font-size: 30px;
+  text-shadow: 5px 5px 10px red;
+}

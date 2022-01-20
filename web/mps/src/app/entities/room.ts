@@ -8,8 +8,8 @@ export class Room {
   maxNo?: number;
   state?: string;
   isExtended?: boolean;
-  players?: [User];
-  score?: [number];
+  players?: User[];
+  score?: number[];
   audienceNo?: number;
 
 }

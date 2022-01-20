@@ -7,6 +7,9 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 
 import { RoomComponent } from './components/room/room.component';
+import { StartPageComponent } from './components/start-page/start-page.component';
+import {CommonModule} from "@angular/common";
+import {HttpClientModule} from "@angular/common/http";
 
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -22,9 +25,12 @@ import { RegisterComponent } from './components/register/register.component';
     LoginComponent,
     HomeComponent,
     RegisterComponent,
-    RoomComponent
+    RoomComponent,
+    StartPageComponent
   ],
   imports: [
+    CommonModule,
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     MatCardModule,
