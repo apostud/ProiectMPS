@@ -14,7 +14,11 @@
 
 
 }
-
+.first {
+  height: 750px;
+  /*background-color: black;*/
+  background-image: url("https://images.squarespace-cdn.com/content/v1/5909ffcbdb29d60889f4a6ab/1513945695538-JK7D2V7BUWYL1Y3VCGFY/giphy+%2811%29.gif?format=1500w");
+}
 .title {
   padding-top: 20px;
   text-align: center;
