@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {User} from "../../entities/user";
 import {Room} from "../../entities/room";
 import {RoomService} from "../../services/room.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -14,7 +15,8 @@ export class StartPageComponent implements OnInit {
   public user?: User
   public rooms? : Room[] = []
   private roomService: RoomService
-  constructor(roomService: RoomService) {
+  constructor(roomService: RoomService,
+              private router: Router) {
     this.roomService = roomService;
   }
 
@@ -36,7 +38,7 @@ export class StartPageComponent implements OnInit {
     room1.name = "ceva"
     room1.type ='ceva'
     room1.admin = user1
-    room1.currentNo = 3
+    room1.currentNo = 11111
     room1.maxNo = 4
     room1.state = 'nustiuceeasta'
     room1.isExtended = false
@@ -46,7 +48,7 @@ export class StartPageComponent implements OnInit {
     room2.name = "ceva"
     room2.type ='ceva'
     room2.admin = user1
-    room2.currentNo = 3
+    room2.currentNo = 22222
     room2.maxNo = 4
     room2.state = 'nustiuceeasta'
     room2.isExtended = false
@@ -54,7 +56,16 @@ export class StartPageComponent implements OnInit {
     room2.score = [1,2]
     room2.audienceNo = 3
     this.rooms = [room1, room2]
-
+    console.log(this.rooms);
   }
 
+  clickPrivateRoom(): void {
+    this.router.navigate(['/create-private-room']);
+  }
+
+  clickPlay(room: Room): void {
+    // let r = '/room:' + room.currentNo;
+    // console.log(r);
+    this.router.navigate(['/room', room.currentNo]);
+  }
 }

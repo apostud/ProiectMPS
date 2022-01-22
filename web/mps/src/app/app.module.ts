@@ -18,6 +18,7 @@ import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
 import { RegisterComponent } from './components/register/register.component';
+import { CreatePrivateRoomComponent } from './components/create-private-room/create-private-room.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { RegisterComponent } from './components/register/register.component';
     HomeComponent,
     RegisterComponent,
     RoomComponent,
-    StartPageComponent
+    StartPageComponent,
+    CreatePrivateRoomComponent
   ],
   imports: [
     CommonModule,

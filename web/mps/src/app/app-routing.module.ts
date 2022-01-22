@@ -5,6 +5,7 @@ import {HomeComponent} from "./components/home/home.component";
 import {RegisterComponent} from "./components/register/register.component";
 import {RoomComponent} from "./components/room/room.component";
 import {StartPageComponent} from "./components/start-page/start-page.component";
+import {CreatePrivateRoomComponent} from "./components/create-private-room/create-private-room.component";
 const routes: Routes = [
   {
     path: 'login',
@@ -19,12 +20,22 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
-    path: 'room',
+    path: 'room/:id',
     component: RoomComponent
   },
   {
     path: 'start',
-    component: StartPageComponent
+    component: StartPageComponent,
+    // children: [
+    //   {
+    //     path: 'room',
+    //     component: RoomComponent
+    //   }
+    // ]
+  },
+  {
+    path: 'create-private-room',
+    component: CreatePrivateRoomComponent
   }
 ];
 

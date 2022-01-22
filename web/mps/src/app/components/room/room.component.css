@@ -36,3 +36,18 @@
   color: white;
 }
 
+.backButton {
+  position: absolute;
+  top: 62px;
+  left: 80px;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: green;
+  font-size: x-large;
+  padding: 16px 30px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  font-family: "Lucida Console", "Courier New", monospace;
+}

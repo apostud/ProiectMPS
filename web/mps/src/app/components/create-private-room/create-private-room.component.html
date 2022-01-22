@@ -1,0 +1,31 @@
+<div class="start">
+  <button class="backButton" (click)="clickBackButton()">BACK</button>
+</div>
+
+<div class="first">
+  <mat-card class="card">
+    <h1 class="title">PRIVATE ROOM</h1>
+
+    <form [formGroup]="privateRoomForm">
+      <a>ID</a>
+      <div class="elem1">
+        <mat-form-field class="field" appearance="fill">
+          <input matInput formControlName="id">
+        </mat-form-field>
+      </div>
+
+      <a>PASSWORD</a>
+      <div class="elem">
+        <mat-form-field class="field" appearance="fill">
+          <input matInput type="password" formControlName="password">
+        </mat-form-field>
+      </div>
+    </form>
+
+    <button mat-raised-button class="play-button" (click)="onClick()"> PLAY </button>
+
+    <a class="errorMessage">{{message}}</a>
+
+  </mat-card>
+</div>
+

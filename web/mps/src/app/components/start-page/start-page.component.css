@@ -10,26 +10,71 @@
   -ms-transform: translate(-50%, -50%);
   background-color: #ec1100;
   color: black;
-  text-shadow: 5px 5px 10px black;
-  font-size: 16px;
+  /*text-shadow: 5px 5px 10px black;*/
+  font-size: x-large;
+  padding: 16px 55px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.rooms-title {
+  font-size: 40px;
+  color: #f1f1f1;
+  font-family: "Lucida Console", "Courier New", monospace;
+  margin-left: 65%;
+  padding-bottom: 20px;
+}
+
+.rooms-list {
+  padding-top: 100px;
+}
+
+
+.line {
+  height:1px;
+  /*width: 50px;*/
+  border-width:0;
+  color: rgba(95, 93, 93, 0.44);
+  background-color: rgba(95, 93, 93, 0.44);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 50%;
+  margin-right: 10%;
+}
+
+.play {
+  margin-left: 55%;
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-weight: bold;
+  font-size: 20px;
+  color: green;
+}
+
+.separate-room {
+  /*width: 20%;*/
+  margin-left: 52%;
+  color: white;
+  font-size: 25px;
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-weight: bold;
+}
+
+.private-room {
+  position: absolute;
+  top: 55%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: green;
+  font-size: x-large;
   padding: 16px 30px;
   border: none;
   cursor: pointer;
   border-radius: 5px;
   text-align: center;
+  font-family: "Lucida Console", "Courier New", monospace;
 }
 
-
-.start .btn:hover {
-  background-color: black;
-  color: white;
-  text-shadow: 2px 2px 5px red;
-}
-
-.rooms {
-  margin-left: 900px;
-  padding-top: 100px;
-  color: white;
-  font-size: 30px;
-  text-shadow: 5px 5px 10px red;
-}

@@ -1,9 +1,16 @@
 <div class="start">
     <span><a routerLink=""><button class="room btn btn-default">NEW ROOM</button></a></span>
-  <div class="rooms">
-    Camere:
-    <div *ngFor = "let room in rooms">
-      
+    <button class="private-room" (click)="clickPrivateRoom()">PRIVATE ROOM</button>
+
+  <div class="rooms-list">
+    <a class="rooms-title">ROOMS:</a>
+    <div class="rooms" *ngFor = "let room of rooms">
+      <hr class="line">
+        <div class="separate-room">#{{room.currentNo}}
+          <router-outlet></router-outlet>
+          <button mat-raised-button class="play" (click)="clickPlay(room)">play</button>
+        </div>
+      <hr class="line">
     </div>
   </div>
 </div>
