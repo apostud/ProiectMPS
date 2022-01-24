@@ -12,10 +12,10 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    const { email, firstName, lastName, password} = req.body;
+    const { email, firstName, lastName, password, role} = req.body;
     const fullName = `${lastName} ${firstName}`;
 
-    const player = new User({ email, fullName, password, isAdmin: false, role: 'PLAYER', isActive: true });
+    const player = new User({ email, fullName, password, isAdmin: false, role, isActive: true });
 
     try {
         emailValidator(req.body);
@@ -33,6 +33,14 @@ router.get("/:id", (req, res) => {
         .select('-password')
         .then(player => res.json(player))
         .catch(err => res.status(404).json(err));
+});
+
+router.put('/:id', (req, res) => {
+    const playerId = req.params.id;
+
+    User.findByIdAndUpdate(playerId, { $set: req.body })
+        .then(() => res.json('Player updated!'))
+        .catch(() => res.status(404).json('Player not found!'));
 });
 
 module.exports = router;
