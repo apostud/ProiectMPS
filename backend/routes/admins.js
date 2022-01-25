@@ -12,10 +12,10 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    const { email, firstName, lastName, password} = req.body;
+    const { email, firstName, lastName, password, role} = req.body;
     const fullName = `${lastName} ${firstName}`;
 
-    const admin = new User({ email, fullName, password, isAdmin: true, role: 'ADMIN', isActive: true });
+    const admin = new User({ email, fullName, password, isAdmin: true, role, isActive: true });
 
     try {
         emailValidator(req.body);
