@@ -15,10 +15,14 @@ import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {NoopAnimationsModule} from "@angular/platform-browser/animations";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
 import { RegisterComponent } from './components/register/register.component';
 import { CreatePrivateRoomComponent } from './components/create-private-room/create-private-room.component';
+import { NewRoomComponent } from './components/new-room/new-room.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {MatRadioModule} from "@angular/material/radio";
 
 @NgModule({
   declarations: [
@@ -28,7 +32,8 @@ import { CreatePrivateRoomComponent } from './components/create-private-room/cre
     RegisterComponent,
     RoomComponent,
     StartPageComponent,
-    CreatePrivateRoomComponent
+    CreatePrivateRoomComponent,
+    NewRoomComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +45,11 @@ import { CreatePrivateRoomComponent } from './components/create-private-room/cre
     MatInputModule,
     NoopAnimationsModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCheckboxModule,
+    MatButtonToggleModule,
+    MatRadioModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

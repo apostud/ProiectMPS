@@ -1,0 +1,36 @@
+<div class="start">
+  <button class="backButton" (click)="clickBackButton()">BACK</button>
+</div>
+
+<div class="first">
+  <mat-card class="card">
+    <h1 class="title">CREATE ROOM</h1>
+
+    <form [formGroup]="createRoomForm">
+      <a class="first-label">Max number of players: </a>
+      <div class="elem-no">
+        <mat-form-field class="field" appearance="fill">
+          <input matInput formControlName="maxNo">
+        </mat-form-field>
+      </div>
+
+      <div class="elem-check">
+        <mat-radio-group formControlName="type">
+          <mat-radio-button (click)="clickCheck()" class="example-margin" *ngFor="let type of types" [value]="type">{{type}}</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <a class="password">PASSWORD</a>
+      <div class="elem">
+        <mat-form-field class="field" appearance="fill">
+          <input [readonly]=readonly matInput type="password" formControlName="password">
+        </mat-form-field>
+      </div>
+    </form>
+
+    <button mat-raised-button class="create-button" (click)="onClick()"> CREATE </button>
+
+    <a class="errorMessage">{{message}}</a>
+
+  </mat-card>
+</div>

@@ -68,4 +68,8 @@ export class StartPageComponent implements OnInit {
     // console.log(r);
     this.router.navigate(['/room', room.currentNo]);
   }
+
+  clickNewRoom(): void {
+    this.router.navigate(['/new-room']);
+  }
 }
