@@ -14,7 +14,7 @@ router.get('/private', (req, res) => {
 });
 router.get('/:id', (req, res) => {
     Room.findById(req.params.id)
-        .then(room => res.json(room))
+        .then(room => res.json({password: room.password }))
         .catch(err => res.status(404).json(err));
 });
 
@@ -45,7 +45,7 @@ router.post('/room', (req, res) => {
             { pass : roomPass }
         ]
     }
-    Room.find({ pass : roomPass })
+    Room.findOne({ pass : roomPass })
         .then(rooms => res.json(rooms))
         .catch((err) => res.status(404).json(err));
 });

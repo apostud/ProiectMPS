@@ -6,9 +6,11 @@
     <a class="rooms-title">ROOMS:</a>
     <div class="rooms" *ngFor = "let room of rooms">
       <hr class="line">
-        <div class="separate-room">#{{room.currentNo}}
+        <div class="separate-room">{{room.name}}
           <router-outlet></router-outlet>
-          <button mat-raised-button class="play" (click)="clickPlay(room)">play</button>
+          <a class="text-play">play as: </a>
+          <button mat-raised-button class="play1" (click)="clickPlayer(room)">player</button>
+          <button mat-raised-button class="play2" (click)="clickPlaySpectator(room)">spectator</button>
         </div>
       <hr class="line">
     </div>

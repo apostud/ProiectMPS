@@ -45,8 +45,21 @@
   margin-right: 10%;
 }
 
-.play {
-  margin-left: 55%;
+.text-play {
+  font-size: 20px;
+  margin-left: 50px;
+}
+
+.play1 {
+  margin-left: 20px;
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-weight: bold;
+  font-size: 20px;
+  color: green;
+}
+
+.play2 {
+  margin-left: 20px;
   font-family: "Lucida Console", "Courier New", monospace;
   font-weight: bold;
   font-size: 20px;

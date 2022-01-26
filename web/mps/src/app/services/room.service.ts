@@ -47,4 +47,15 @@ export class RoomService {
     return this.http.get<User>('http://localhost:5000/api/players/' + email, {observe:'response'})
       .pipe(map((res: HttpResponse<User>) => res));
   }
+
+  public getRoomById(id: string) : Observable<HttpResponse<Room>> {
+    const params = new HttpParams().set('id', id);
+    return this.http.get<Room>('http://localhost:5000/api/rooms/' + id, {observe:'response'})
+      .pipe(map((res: HttpResponse<Room>) => res));
+  }
+
+  public getRoom(room:  Room) : any {
+    return this.http.post<Room>('http://localhost:5000/api/rooms/room', room, {observe:"response"} )
+      .pipe(map((res:HttpResponse<Room>) => res));
+  }
 }

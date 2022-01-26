@@ -2,7 +2,7 @@
 <!--<div class="black" *ngIf="!nextRound()" >  <p>Next Round</p> </div>-->
 <div class = "room">
   <div class="start">
-    <button class="backButton" (click)="clickBackButton()">BACK</button>
+<!--    <button class="backButton" (click)="clickBackButton()">BACK</button>-->
   </div>
   <div class="header">
     <h1>Room</h1>
@@ -17,12 +17,12 @@
         <div><button class="btn btn-default">Add</button> </div>
     <div class = "players">
       <a class="players-title">PLAYERS:</a>
-      <div *ngFor = "let player of room!.players">
-        <hr class="line">
-        <div class="separate-room">#{{player.fullName}} : {{room!.score![room!.players!.indexOf(player!)]}}
-        </div>
-        <hr class="line">
-      </div>
+<!--      <div *ngFor = "let player of room!.players">-->
+<!--        <hr class="line">-->
+<!--        <div class="separate-room">#{{player.fullName}} : {{room!.score![room!.players!.indexOf(player!)]}}-->
+<!--        </div>-->
+<!--        <hr class="line">-->
+<!--      </div>-->
     </div>
 
   </div>
