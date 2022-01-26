@@ -9,7 +9,7 @@
       <hr class="line">
         <div class="separate-room">{{room.name}}
           <router-outlet></router-outlet>
-          <button mat-raised-button class="play1" (click)="clickPlayer(room)">active</button>
+            <button *ngIf="room!.currentNo! < room.maxNo!" mat-raised-button class="play1" (click)="clickPlayer(room)">active</button>
           <button mat-raised-button class="play2" (click)="clickPlaySpectator(room)">passive</button>
         </div>
       <hr class="line">

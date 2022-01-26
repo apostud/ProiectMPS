@@ -44,11 +44,12 @@ router.get("/:id", (req, res) => {
 });
 
 router.put('/', (req, res) => {
-    const playerId = req.params.id;
+    // const userEmail = req.body.email;
 
-    User.findByIdAndUpdate(playerId, { $set: req.body })
+    User.findOneAndUpdate({ email: req.body.email }, { $set: req.body })
         .then(() => res.json('Player updated!'))
         .catch(() => res.status(404).json('Player not found!'));
 });
+
 
 module.exports = router;

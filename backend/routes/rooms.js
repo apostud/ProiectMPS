@@ -29,9 +29,9 @@ router.post('/', (req, res) => {
 });
 
 router.put('/', (req, res) => {
-    const roomId = req.params.id;
+    const roomId = req.body.name;
 
-    Room.findByIdAndUpdate(roomId, { $set: req.body })
+    Room.findOneAndUpdate(req.body.name, { $set: req.body })
         .then(() => res.json('Room updated!'))
         .catch(() => res.status(404).json('Room not found!'));
 });

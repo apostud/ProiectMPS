@@ -29,14 +29,6 @@ export class CreatePrivateRoomComponent implements OnInit {
   }
 
   onClickActive(): void {
-    this.onClick();
-  }
-
-  onClickPassive(): void {
-    this.onClick();
-  }
-
-  onClick(): void {
     this.message = '';
     if (this.privateRoomForm.value.id === '') {
       this.message = 'All fields must be completed!';
@@ -44,19 +36,53 @@ export class CreatePrivateRoomComponent implements OnInit {
     if (this.privateRoomForm.value.password === '') {
       this.message = 'All fields must be completed!';
     }
-    // this.service.getRoomById(this.privateRoomForm.value.id).subscribe(res => {
-    //   console.log(res.body);
-    //   console.log(this.privateRoomForm.value);
-    // })
+
     let room = new Room();
     room.name = this.privateRoomForm.value.name;
     room.pass = this.privateRoomForm.value.password;
     this.service.getRoom(room).subscribe((res: any) => {
-      if (res.body.name === room.name && res.body.pass === room.pass) {
-        this.router.navigate(['/room', room.name]);
-      }
-      //this.router.navigate(['/room'], this.privateRoomForm.value.name);
+      let room2 = res.body;
+      room2.players?.push(JSON.parse(localStorage.getItem("user")!)._id);
+      room2.score?.push(0);
+      room2.currentNo =   room2.currentNo + 1;
+      this.service.updateRoom(room2).subscribe(()=> {
+        this.router.navigate(['/room', room2.name]);
+      });
+
+
     });
   }
+
+  onClickPassive(): void {
+    this.message = '';
+    if (this.privateRoomForm.value.id === '') {
+      this.message = 'All fields must be completed!';
+    }
+    if (this.privateRoomForm.value.password === '') {
+      this.message = 'All fields must be completed!';
+    }
+
+    let room = new Room();
+    room.name = this.privateRoomForm.value.name;
+    room.pass = this.privateRoomForm.value.password;
+    this.service.getRoom(room).subscribe((res: any) => {
+      let room2 = res.body;
+      let user = JSON.parse(localStorage.getItem('user')!);
+      user.type = "spectator";
+      this.service.updateUser(user).subscribe((data:any)=> {
+        room2.players?.push(JSON.parse(localStorage.getItem("user")!)._id);
+
+        room2.score?.push(0);
+        room2.audienceNo  = room2.audienceNo! + 1;
+        this.service.updateRoom(room2).subscribe(()=> {
+          this.router.navigate(['/room', room2.name])
+        });
+      });
+
+
+    });
+  }
+
+
 
 }

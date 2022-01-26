@@ -3,6 +3,7 @@ import {User} from "../../entities/user";
 import {Room} from "../../entities/room";
 import {RoomService} from "../../services/room.service";
 import {Router} from "@angular/router";
+import {J} from "@angular/cdk/keycodes";
 
 
 @Component({
@@ -21,11 +22,27 @@ export class StartPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     if(!localStorage.getItem('user')) {
+      // user.email = this.registerForm.value.email;
+      // user.fullName = this.registerForm.value.name;
+      // console.log(this.registerForm.value.name)
+      // user.password = this.registerForm.value.password;
+      // user.role = "PLAYER";
+      // user.isAdmin = false;
+      // user.isActive = false;
+      // this.roomService.addUser(user).subscribe((data:any) => console.log(data.body));
       let current = new Date();
       this.user = new User()
       this.user.fullName = 'user' + current.getTime();
+      this.user.password ="-";
+      this.user.isActive = false;
+      this.user.isAdmin = false;
+      this.user.role = "PLAYER";
+      this.user.email = this.user.fullName;
       localStorage.setItem('user', JSON.stringify(this.user))
+
+      console.log(this.user)
       this.roomService.addUser(this.user).subscribe();
     }
 
@@ -33,32 +50,7 @@ export class StartPageComponent implements OnInit {
     this.roomService.getPublicRooms().subscribe((data:any) => {
       this.rooms = data.body;
     })
-    // let user1 = new User()
-    // let user2 = new User()
-    // let room1 = new Room();
-    // let room2 = new Room();
-    // room1.name = "ceva"
-    // room1.type ='ceva'
-    // room1.admin = user1
-    // room1.currentNo = 11111
-    // room1.maxNo = 4
-    // // room1.state = 'nustiuceeasta'
-    // room1.isExtended = false
-    // room1.players = [user1, user2]
-    // room1.score = [1,2]
-    // room1.audienceNo = 3
-    // room2.name = "ceva"
-    // room2.type ='ceva'
-    // room2.admin = user1
-    // room2.currentNo = 22222
-    // room2.maxNo = 4
-    // // room2.state = 'nustiuceeasta'
-    // room2.isExtended = false
-    // room2.players = [user1, user2]
-    // room2.score = [1,2]
-    // room2.audienceNo = 3
-    // this.rooms = [room1, room2]
-    // console.log(this.rooms);
+
   }
 
   clickPrivateRoom(): void {
@@ -66,27 +58,27 @@ export class StartPageComponent implements OnInit {
   }
 
   clickPlaySpectator(room: Room): void {
-    // let r = '/room:' + room.currentNo;
-    // console.log(r);
-    // this.roomService.getUsersByEmail(JSON.parse(localStorage.getItem('user')!).email).subscribe((data:any) => {
-     let user = JSON.parse(localStorage.getItem('user')!).email;
+
+     let user = JSON.parse(localStorage.getItem('user')!);
       user.type = "spectator";
-      // this.roomService.updateUser(data.body).subscribe((data:any)=> {
     this.roomService.updateUser(user).subscribe((data:any)=> {
-        room.players?.push(data.body);
+        room.players?.push(JSON.parse(localStorage.getItem("user")!)._id);
+
         room.score?.push(0);
         room.audienceNo  = room.audienceNo! + 1;
         this.roomService.updateRoom(room).subscribe(()=> {
           this.router.navigate(['/room', room.name]);
         });
       });
-    // })
+
 
   }
 
   clickPlayer(room: Room): void {
-        room.players?.push(JSON.parse(localStorage.getItem('user')!));
+        room.players?.push(JSON.parse(localStorage.getItem("user")!)._id);
         room.score?.push(0);
+    room.currentNo =   room.currentNo! + 1;
+       console.log(JSON.parse(localStorage.getItem("user")!)._id)
         this.roomService.updateRoom(room).subscribe(()=> {
           this.router.navigate(['/room', room.name]);
         });

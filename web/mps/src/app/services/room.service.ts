@@ -66,12 +66,13 @@ export class RoomService {
       .pipe(map((res: HttpResponse<User>) => res));
   }
   public updateUser(user:User) : Observable<HttpResponse<User>> {
-    return this.http.put<User>('http://localhost:5000/api/players/', user, {observe:`response`})
+    return this.http.put<User>('http://localhost:5000/api/players/' , user, {observe:`response`})
       .pipe(map((res:HttpResponse<User>)=>res))
   }
 
   public updateRoom(room:Room) : Observable<HttpResponse<Room>> {
-    return this.http.put<Room>('http://localhost:5000/api/rooms/', room, {observe:`response`})
+    console.log(room)
+    return this.http.put<Room>('http://localhost:5000/api/rooms/' , room, {observe:`response`})
       .pipe(map((res:HttpResponse<Room>)=>res))
   }
 }

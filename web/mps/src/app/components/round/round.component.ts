@@ -25,8 +25,8 @@ export class RoundComponent implements OnInit {
 
   startTimer() {
     setTimeout(()=> {
-      this.router.navigate(["/room"])
-    }, 2000)
+      this.router.navigate(["/room/Room7"])
+    }, 5000)
     // this.interval = setInterval(() => {
     //   if (this.timeLeft > 0) {
     //     this.timeLeft--;
