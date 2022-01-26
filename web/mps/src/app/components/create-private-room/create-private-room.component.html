@@ -22,7 +22,9 @@
       </div>
     </form>
 
-    <button mat-raised-button class="play-button" (click)="onClick()"> PLAY </button>
+    <a class="play-as"> play:</a>
+    <button mat-raised-button class="play-button1" (click)="onClickActive()"> ACTIVE </button>
+    <button mat-raised-button class="play-button2" (click)="onClickPassive()"> PASSIVE </button>
 
     <a class="errorMessage">{{message}}</a>
 

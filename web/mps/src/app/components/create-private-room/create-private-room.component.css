@@ -61,7 +61,7 @@
   color: white;
 }
 
-.play-button {
+.play-button1 {
   font-family: "Lucida Console", "Courier New", monospace;
   font-weight: bold;
   color: black;
@@ -70,8 +70,23 @@
   font-size: larger;
   margin: 0;
   position: absolute;
-  top: 83%;
-  left: 40%;
+  top: 90%;
+  left: 20%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.play-button2 {
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-weight: bold;
+  color: black;
+  height: 50px;
+  width: 20%;
+  font-size: larger;
+  margin: 0;
+  position: absolute;
+  top: 90%;
+  left: 60%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
@@ -97,4 +112,9 @@ textarea:focus, input:focus {
   top: 90%;
   text-align: center;
   color: #ec0303;
+}
+
+.play-as {
+  margin-left: 42%;
+  font-weight: bold;
 }

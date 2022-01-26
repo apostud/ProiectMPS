@@ -28,6 +28,14 @@ export class CreatePrivateRoomComponent implements OnInit {
     this.router.navigate(['/start']);
   }
 
+  onClickActive(): void {
+    this.onClick();
+  }
+
+  onClickPassive(): void {
+    this.onClick();
+  }
+
   onClick(): void {
     this.message = '';
     if (this.privateRoomForm.value.id === '') {
