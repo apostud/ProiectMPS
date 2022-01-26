@@ -17,7 +17,11 @@ export class RoomService {
   constructor(private http: HttpClient) { }
 
   public getPublicRooms() : Observable<EntityArrayResponseType> {
-    return this.http.get<Room[]>('url', { observe: 'response' })
+    return this.http.get<Room[]>('http://localhost:5000/api/rooms/', { observe: 'response' })
+      .pipe(map((res: EntityArrayResponseType) => res));
+  }
+  public getPrivateRooms() : Observable<EntityArrayResponseType> {
+    return this.http.get<Room[]>('http://localhost:5000/api/rooms/private', { observe: 'response' })
       .pipe(map((res: EntityArrayResponseType) => res));
   }
   public getRoomByName(name :string) : Observable<EntityResponseType> {
@@ -29,8 +33,18 @@ export class RoomService {
     console.log(user)
     return this.http.post<User>('http://localhost:5000/api/players/', user, {observe:"response"} )
       .pipe(map((res:HttpResponse<User>) => res));
-    // let xml = new XMLHttpRequest();
-    // xml.open("POST", 'http://localhost:5000/api/players', true);
-    // xml.send(JSON.parse(JSON.stringify(user)));
+  }
+    public addRoom(room:  Room) : any {
+    return this.http.post<Room>('http://localhost:5000/api/rooms/', room, {observe:"response"} )
+      .pipe(map((res:HttpResponse<Room>) => res));
+  }
+  public getUsers() : Observable<HttpResponse<User[]>> {
+    return this.http.get<User[]>('http://localhost:5000/api/players/', { observe:'response'})
+      .pipe(map((res: any) => res));
+  }
+  public getUsersByEmail(email: string) : Observable<HttpResponse<User>> {
+    const params = new HttpParams().set('email', email);
+    return this.http.get<User>('http://localhost:5000/api/players/' + email, {observe:'response'})
+      .pipe(map((res: HttpResponse<User>) => res));
   }
 }

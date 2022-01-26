@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {FormControl, FormGroup} from "@angular/forms";
+import {Room} from "../../entities/room";
+import {RoomService} from "../../services/room.service";
 
 @Component({
   selector: 'app-new-room',
@@ -19,7 +21,7 @@ export class NewRoomComponent implements OnInit {
   });
 
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private roomService: RoomService) { }
 
   ngOnInit(): void {
   }
@@ -30,6 +32,24 @@ export class NewRoomComponent implements OnInit {
 
   onClick(): void {
     console.log(this.createRoomForm.value.type);
+    let room = new Room();
+    let current = new Date();
+    room.name = "room" + current.getTime();
+    room.type = this.createRoomForm.value.type;
+    room.admin = JSON.parse(localStorage.getItem("user")!);
+    room.currentNo = 1;
+    room.maxNo = this.createRoomForm.value.maxNo;
+    room.players = [room.admin!];
+    room.score = [0];
+    room.audienceNo = 0;
+    room.isExtended = false;
+    if(room.type === 'private') {
+      room.pass = this.createRoomForm.value.password;
+    }else {
+      room.pass='';
+    }
+    console.log(room.type)
+    this.roomService.addRoom(room).subscribe();
   }
 
   async clickCheck(): Promise<void> {
@@ -40,6 +60,6 @@ export class NewRoomComponent implements OnInit {
       this.readonly = false;
       console.log(this.readonly);
     }
-    await(10);
+   await(10);
   }
 }

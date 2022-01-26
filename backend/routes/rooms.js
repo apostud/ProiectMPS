@@ -8,7 +8,10 @@ router.get('/', (req, res) => {
     Room.find({"type" : "public"})
         .then(rooms => res.json(rooms));
 });
-
+router.get('/private', (req, res) => {
+    Room.find({"type" : "private"})
+        .then(rooms => res.json(rooms));
+});
 router.get('/:id', (req, res) => {
     Room.findById(req.params.id)
         .then(room => res.json(room))
@@ -16,9 +19,9 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    const {name, type, admin, currentNo, maxNo, state, isExtended, players, score, audienceNo} = req.body;
+    const {name, pass, type, admin, currentNo, maxNo, isExtended, players, score, audienceNo} = req.body;
 
-    const room = new Room({name, type, admin, currentNo, maxNo, state, isExtended, players, score, audienceNo});
+    const room = new Room({name, pass, type, admin, currentNo, maxNo, isExtended, players, score, audienceNo});
 
     room.save()
         .then(() => res.status(201).json('Room added!'))

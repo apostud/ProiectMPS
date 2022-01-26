@@ -11,6 +11,14 @@ router.get('/', (req, res) => {
         .catch(err => res.status(404).json(err));
 })
 
+router.get('/:email', (req, res) => {
+    const userEmail = req.params.email;
+    User.findOne({ email: userEmail })
+        .select('-password')
+        .then(players => res.json(players))
+        .catch(err => res.status(404).json(err));
+})
+
 router.post('/', (req, res) => {
     const { email, fullName, password, role} = req.body;
     // const fullName = `${username}`;
