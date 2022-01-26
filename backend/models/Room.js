@@ -5,6 +5,10 @@ const RoomSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+    pass: {
+        type: String,
+        required: true,
+    },
     type: {
         type: String,
         required: true,
@@ -20,11 +24,6 @@ const RoomSchema = mongoose.Schema({
     maxNo: {
         type: Number,
         default: 3,
-    },
-    state: {
-        type: String,
-        enum: ['In desfasurare', 'Lobby', 'Finalizat'],
-        default: 'Lobby',
     },
     isExtended: {
         type: Boolean,

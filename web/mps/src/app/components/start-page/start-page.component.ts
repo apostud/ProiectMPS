@@ -40,7 +40,7 @@ export class StartPageComponent implements OnInit {
     room1.admin = user1
     room1.currentNo = 11111
     room1.maxNo = 4
-    room1.state = 'nustiuceeasta'
+    // room1.state = 'nustiuceeasta'
     room1.isExtended = false
     room1.players = [user1, user2]
     room1.score = [1,2]
@@ -50,7 +50,7 @@ export class StartPageComponent implements OnInit {
     room2.admin = user1
     room2.currentNo = 22222
     room2.maxNo = 4
-    room2.state = 'nustiuceeasta'
+    // room2.state = 'nustiuceeasta'
     room2.isExtended = false
     room2.players = [user1, user2]
     room2.score = [1,2]
