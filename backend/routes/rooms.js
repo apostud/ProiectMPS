@@ -36,4 +36,18 @@ router.put('/:id', (req, res) => {
         .catch(() => res.status(404).json('Room not found!'));
 });
 
+router.post('/room', (req, res) => {
+    const roomName = req.body.name;
+    const roomPass = req.body.pass;
+    const query = {
+        $and: [
+            { name : roomName },
+            { pass : roomPass }
+        ]
+    }
+    Room.find({ pass : roomPass })
+        .then(rooms => res.json(rooms))
+        .catch((err) => res.status(404).json(err));
+});
+
 module.exports = router;

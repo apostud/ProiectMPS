@@ -46,10 +46,12 @@ export class NewRoomComponent implements OnInit {
     if(room.type === 'private') {
       room.pass = this.createRoomForm.value.password;
     }else {
-      room.pass='';
+      room.pass='-';
     }
     console.log(room.type)
-    this.roomService.addRoom(room).subscribe();
+    this.roomService.addRoom(room).subscribe(() => {
+      this.router.navigate(['/start'])
+    });
   }
 
   async clickCheck(): Promise<void> {
