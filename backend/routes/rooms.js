@@ -50,4 +50,10 @@ router.post('/room', (req, res) => {
         .catch((err) => res.status(404).json(err));
 });
 
+router.get('/name/:name', (req, res) => {
+    Room.findOne({ name: req.params.name })
+        .then(room => res.json(room))
+        .catch(err => res.status(404).json(err));
+});
+
 module.exports = router;
