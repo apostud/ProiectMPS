@@ -95,4 +95,9 @@ export class StartPageComponent implements OnInit {
   clickNewRoom(): void {
     this.router.navigate(['/new-room']);
   }
+
+  clickLogOut(): void {
+    localStorage.removeItem('user');
+    this.router.navigate(['/login']);
+  }
 }

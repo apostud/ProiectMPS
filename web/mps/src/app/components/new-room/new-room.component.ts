@@ -51,7 +51,7 @@ export class NewRoomComponent implements OnInit {
     }
     console.log(room.type)
     this.roomService.addRoom(room).subscribe(() => {
-      this.router.navigate(['/start'])
+      this.router.navigate(['/room', room.name]);
     });
   }
 
