@@ -43,6 +43,7 @@ export class NewRoomComponent implements OnInit {
     room.score = [0];
     room.audienceNo = 0;
     room.isExtended = false;
+    // room.round = 1;
     if(room.type === 'private') {
       room.pass = this.createRoomForm.value.password;
     }else {

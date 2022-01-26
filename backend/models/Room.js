@@ -41,7 +41,11 @@ const RoomSchema = mongoose.Schema({
     audienceNo: {
         type: Number,
         default: 0,
-    }
+    },
+    round: {
+        type: Number,
+        default: 0
+    },
 });
 
 const Room = mongoose.model('Room', RoomSchema);

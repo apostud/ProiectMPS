@@ -7,6 +7,7 @@ import {RoomComponent} from "./components/room/room.component";
 import {StartPageComponent} from "./components/start-page/start-page.component";
 import {CreatePrivateRoomComponent} from "./components/create-private-room/create-private-room.component";
 import {NewRoomComponent} from "./components/new-room/new-room.component";
+import {RoundComponent} from "./components/round/round.component";
 const routes: Routes = [
   {
     path: 'login',
@@ -35,7 +36,9 @@ const routes: Routes = [
   {
     path: 'new-room',
     component: NewRoomComponent
-  }
+  },
+  {path: `round`,
+  component: RoundComponent}
 ];
 
 @NgModule({

@@ -1,0 +1,41 @@
+.round {
+  height: 1000px;
+  background-color: black;
+  color : white;
+}
+.nr {
+  font-size: 40px;
+  color: #f1f1f1;
+  font-family: "Lucida Console", "Courier New", monospace;
+  margin-left: 30%;
+  padding-top: 300px;
+  text-shadow: 2px 2px 5px red;
+
+}
+.room {
+  font-size: 40px;
+  color: #f1f1f1;
+  font-family: "Lucida Console", "Courier New", monospace;
+  margin-left: 30%;
+  text-shadow: 2px 2px 5px red;
+  padding-top: 20px;
+
+}
+.col-sm-4{
+  flex:1;
+}
+.col-sm-8{
+  flex:1;
+}
+.clasament {
+  font-size: 40px;
+  color: #f1f1f1;
+  font-family: "Lucida Console", "Courier New", monospace;
+  margin-left: 10%;
+  text-shadow: 2px 2px 5px red;
+  padding-top: 100px;
+
+}
+.row {
+  display: flex;
+}

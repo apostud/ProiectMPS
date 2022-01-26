@@ -43,9 +43,9 @@ export class LoginComponent implements OnInit {
       //   }
       // });
 
-      this.roomService.getUsersByEmail(this.loginForm.value.email).subscribe((data:any) => {
-        console.log(data.body)
-        localStorage.setItem('user', JSON.stringify(data.body));
+      this.roomService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe((data:any) => {
+        console.log(data.body.user)
+        localStorage.setItem('user', JSON.stringify(data.body.user));
         this.router.navigate(['/start'])
       })
     }

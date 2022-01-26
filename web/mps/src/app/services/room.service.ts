@@ -58,4 +58,20 @@ export class RoomService {
     return this.http.post<Room>('http://localhost:5000/api/rooms/room', room, {observe:"response"} )
       .pipe(map((res:HttpResponse<Room>) => res));
   }
+  public login(email: string, password: string) : Observable<HttpResponse<User>> {
+   let user = new User();
+   user.password = password;
+   user.email = email;
+    return this.http.post<User>('http://localhost:5000/api/auth/login/',  user, {observe:'response'})
+      .pipe(map((res: HttpResponse<User>) => res));
+  }
+  public updateUser(user:User) : Observable<HttpResponse<User>> {
+    return this.http.put<User>('http://localhost:5000/api/players/', user, {observe:`response`})
+      .pipe(map((res:HttpResponse<User>)=>res))
+  }
+
+  public updateRoom(room:Room) : Observable<HttpResponse<Room>> {
+    return this.http.put<Room>('http://localhost:5000/api/rooms/', room, {observe:`response`})
+      .pipe(map((res:HttpResponse<Room>)=>res))
+  }
 }

@@ -11,6 +11,7 @@ export class Room {
   players?: User[];
   score?: number[];
   audienceNo?: number;
+  round? : number;
 
 
 }

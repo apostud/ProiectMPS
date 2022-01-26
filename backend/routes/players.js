@@ -43,7 +43,7 @@ router.get("/:id", (req, res) => {
         .catch(err => res.status(404).json(err));
 });
 
-router.put('/:id', (req, res) => {
+router.put('/', (req, res) => {
     const playerId = req.params.id;
 
     User.findByIdAndUpdate(playerId, { $set: req.body })

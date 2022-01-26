@@ -26,6 +26,7 @@ export class StartPageComponent implements OnInit {
       this.user = new User()
       this.user.fullName = 'user' + current.getTime();
       localStorage.setItem('user', JSON.stringify(this.user))
+      this.roomService.addUser(this.user).subscribe();
     }
 
     //decomenteaza dupa ce rezolvi url
@@ -67,11 +68,28 @@ export class StartPageComponent implements OnInit {
   clickPlaySpectator(room: Room): void {
     // let r = '/room:' + room.currentNo;
     // console.log(r);
-    this.router.navigate(['/room', room.name]);
+    // this.roomService.getUsersByEmail(JSON.parse(localStorage.getItem('user')!).email).subscribe((data:any) => {
+     let user = JSON.parse(localStorage.getItem('user')!).email;
+      user.type = "spectator";
+      // this.roomService.updateUser(data.body).subscribe((data:any)=> {
+    this.roomService.updateUser(user).subscribe((data:any)=> {
+        room.players?.push(data.body);
+        room.score?.push(0);
+        room.audienceNo  = room.audienceNo! + 1;
+        this.roomService.updateRoom(room).subscribe(()=> {
+          this.router.navigate(['/room', room.name]);
+        });
+      });
+    // })
+
   }
 
   clickPlayer(room: Room): void {
-    this.router.navigate(['/room', room.name]);
+        room.players?.push(JSON.parse(localStorage.getItem('user')!));
+        room.score?.push(0);
+        this.roomService.updateRoom(room).subscribe(()=> {
+          this.router.navigate(['/room', room.name]);
+        });
   }
 
   clickNewRoom(): void {

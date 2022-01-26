@@ -23,6 +23,7 @@ import { NewRoomComponent } from './components/new-room/new-room.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatRadioModule} from "@angular/material/radio";
+import { RoundComponent } from './components/round/round.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {MatRadioModule} from "@angular/material/radio";
     RoomComponent,
     StartPageComponent,
     CreatePrivateRoomComponent,
-    NewRoomComponent
+    NewRoomComponent,
+    RoundComponent
   ],
   imports: [
     CommonModule,
