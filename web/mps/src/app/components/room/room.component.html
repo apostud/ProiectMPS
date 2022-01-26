@@ -1,3 +1,5 @@
+<!--<div class="black" *ngIf="nextRound()" >  <p>Next Round</p> </div>-->
+<!--<div class="black" *ngIf="!nextRound()" >  <p>Next Round</p> </div>-->
 <div class = "room">
   <div class="start">
     <button class="backButton" (click)="clickBackButton()">BACK</button>
@@ -6,9 +8,22 @@
     <h1>Room</h1>
   </div>
   <div class = "word">
+<!--    <button (click)='startTimer()'>Start Timer</button>-->
+<!--    <button (click)='pauseTimer()'>Pause</button>-->
+
+<!--    <p>{{timeLeft}} Seconds Left....</p>-->
 
         <textarea class="form-control word-description"  rows="7" placeholder="Descrie cuvantul" required=""></textarea>
         <div><button class="btn btn-default">Add</button> </div>
+    <div class = "players">
+      <a class="players-title">PLAYERS:</a>
+      <div *ngFor = "let player of room!.players">
+        <hr class="line">
+        <div class="separate-room">#{{player.fullName}} : {{room!.score![room!.players!.indexOf(player!)]}}
+        </div>
+        <hr class="line">
+      </div>
+    </div>
 
   </div>
 

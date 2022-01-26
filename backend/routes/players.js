@@ -12,8 +12,8 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    const { email, firstName, lastName, password, role} = req.body;
-    const fullName = `${lastName} ${firstName}`;
+    const { email, fullName, password, role} = req.body;
+    // const fullName = `${username}`;
 
     const player = new User({ email, fullName, password, isAdmin: false, role, isActive: true });
 
