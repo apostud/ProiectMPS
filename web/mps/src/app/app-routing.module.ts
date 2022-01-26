@@ -37,7 +37,7 @@ const routes: Routes = [
     path: 'new-room',
     component: NewRoomComponent
   },
-  {path: `round`,
+  {path: 'round/:name',
   component: RoundComponent}
 ];
 

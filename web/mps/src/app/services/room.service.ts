@@ -26,7 +26,7 @@ export class RoomService {
   }
   public getRoomByName(name :string) : Observable<EntityResponseType> {
     const params = new HttpParams().set('name', name);
-    return this.http.get<Room>('url', {params, observe:'response'})
+    return this.http.get<Room>('http://localhost:5000/api/rooms/name/' + name, {params, observe:'response'})
       .pipe(map((res: EntityResponseType) => res));
   }
   public addUser(user: User) : any {

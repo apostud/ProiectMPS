@@ -2,89 +2,73 @@
   color : white;
   text-align: center;
 }
-.black {
-  background-color: black;
-  color: white;
-  height: 10000px;
-  width: 100%;
-}
 .room {
   border: none;
   background-color: black;
   height: 10000px;
-  width: 100%;
-}
-.word {
-  color: white;
-  margin-left: 5%;
-  margin-top: 15%;
-}
-.word-description{
-  width: 35%;
-  height: 150px;
+  /*width: 100%;*/
 }
 
-.word .btn{
-  position: absolute;
-  background-color: #f1f1f1;
-  margin-left: 13%;
-  color: black;
-  font-size: 16px;
-  padding: 16px 30px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  text-align: center;
-}
-
-.word .btn:hover {
-  background-color: black;
-  color: white;
-}
-
-.backButton {
-  position: absolute;
-  top: 62px;
-  left: 80px;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  background-color: green;
-  font-size: x-large;
-  padding: 16px 30px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  text-align: center;
+.room-title {
   font-family: "Lucida Console", "Courier New", monospace;
-}
-.players {
-  /*padding-top: 50px;*/
+  padding-top: 50px;
+  margin-bottom: 100px;
 }
 
-.players-title {
-  font-size: 40px;
+.question {
   color: #f1f1f1;
   font-family: "Lucida Console", "Courier New", monospace;
-  margin-left: 65%;
-  padding-bottom: 20px;
+  font-size: 50px;
+  margin-left: 25%;
 }
 
-.line {
-  height:1px;
-  /*width: 50px;*/
-  border-width:0;
-  color: rgba(95, 93, 93, 0.44);
-  background-color: rgba(95, 93, 93, 0.44);
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-left: 50%;
-  margin-right: 10%;
+.elem-check {
+  margin-bottom: 50px;
+  font-size: 50px;
+  margin-left: 36%;
+  margin-top: 50px;
 }
-.separate-room {
-  /*width: 20%;*/
-  margin-left: 52%;
-  color: white;
-  font-size: 25px;
-  font-family: "Lucida Console", "Courier New", monospace;
+
+.example-margin {
+  margin-left: 130px;
+  margin-top: 50px;
   font-weight: bold;
+  color: white;
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-size: 30px;
+}
+
+:host ::ng-deep .mat-radio-container{
+  height: 35px;
+  width: 10px;
+  margin-right: 10px;
+}
+:host ::ng-deep .mat-radio-outer-circle{
+  height: 20px;
+  width: 20px;
+  margin-top: 7px;
+  margin-left: 1px;
+}
+:host ::ng-deep .mat-radio-inner-circle{
+  height: 10px;
+  width: 10px;
+
+}
+:host ::ng-deep .mat-radio-button .mat-radio-ripple{
+  height: 20px; /*double of your required circle radius*/
+  width: 20px;  /*double of your required circle radius*/
+  left: calc(10%); /*'10px'-same as your required circle radius*/
+  top: calc(50%); /*'10px'-same as your required circle radius*/
+}
+
+.buttons-group {
+  display: flex; flex-direction: column;
+  margin: 15px 0;
+}
+
+.text-primary {
+  color: #ff0000;
+  font-size: 80px;
+  font-family: "Lucida Console", "Courier New", monospace;
+  /*margin-top: 50px;*/
 }

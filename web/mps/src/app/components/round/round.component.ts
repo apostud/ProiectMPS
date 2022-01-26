@@ -11,22 +11,25 @@ import {Router} from "@angular/router";
 export class RoundComponent implements OnInit {
 
   room? : Room;
+  name? : string
+
   constructor(private router: Router, private roomService: RoomService) { }
 
   ngOnInit(): void {
+    this.name = this.router.url.split('/')[2];
    // this.roomService.getRoomByName(this.router.url.split('/')[2]).subscribe((data:any) => {
    //   this.room = data.body;
       this.startTimer();
    // })
   }
 
-  timeLeft: number = 2;
+  timeLeft: number = 4;
   interval: any;
 
   startTimer() {
     setTimeout(()=> {
-      this.router.navigate(["/room/Room7"])
-    }, 5000)
+      this.router.navigate(["/room", this.name]);
+    }, 2000)
     // this.interval = setInterval(() => {
     //   if (this.timeLeft > 0) {
     //     this.timeLeft--;
