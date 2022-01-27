@@ -7,11 +7,11 @@
     <button class="details btn btn-default" (click)="settings()">ROOM SETTINGS</button>
 
   </div>
-  <a class="question"> Care este capitala Romaniei? </a>
+  <a class="question"> {{selectedQuestion}} </a>
 
   <div class="elem-check" [formGroup]="typesForm">
     <mat-radio-group formControlName="type" class="buttons-group">
-      <mat-radio-button (click)="clickCheck()" class="example-margin" *ngFor="let type of types" [value]="type">{{type}}</mat-radio-button>
+      <mat-radio-button (click)="clickCheck()" class="example-margin" *ngFor="let type of selectedTypes" [value]="type">{{type}}</mat-radio-button>
     </mat-radio-group>
   </div>
 

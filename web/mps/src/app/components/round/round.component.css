@@ -39,3 +39,19 @@
 .row {
   display: flex;
 }
+
+.back-to-menu {
+  position: absolute;
+  top: 8%;
+  left: 8%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #bcbec1;
+  font-size: x-large;
+  padding: 16px 30px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  font-family: "Lucida Console", "Courier New", monospace;
+}

@@ -1,6 +1,8 @@
 <div class = "round">
 <!--  <div>Round {{room!.round}}</div>-->
 <!--  <div>Room {{room!.name}}</div>-->
+  <button mat-raised-button *ngIf="backToMenu === true" class="back-to-menu" (click)="clickBackToMenu()"> Back to menu</button>
+
   <div class="row">
     <div class="col-sm-4">
       <div class="nr">Round</div>

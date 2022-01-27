@@ -15,10 +15,22 @@ import { interval } from 'rxjs';
 })
 export class RoomComponent implements OnInit, OnDestroy {
   static timer = 10;
+  static round = 0;
   minutes: string | number = 0;
   seconds: string | number | undefined;
   name? : string
-  types: string[] = ['Paris', 'Bucuresti', 'Polovragi', 'Cernisoara'];
+  question1 = 'Care este capitala Romaniei?';
+  question2 = 'Cate picioare au 2 gaini + 3 vaci?';
+  question3 = 'Ce nota o sa am la MPS?';
+  selectedQuestion: string | undefined;
+  types1: string[] = ['Paris', 'Bucuresti', 'Polovragi', 'Cernisoara'];
+  types2: string[] = ['14', '5', '16', '20'];
+  types3: string[] = ['10', '9', '5', '4'];
+  selectedTypes: string[] | undefined;
+  correctAnswer1 = 'Bucuresti';
+  correctAnswer2 = '16';
+  correctAnswer3 = '10';
+  selectedAnswer: string | undefined;
   room = new Room();
   intervalSubscription: Subscription | undefined;
   typesForm = new FormGroup({
@@ -30,27 +42,26 @@ export class RoomComponent implements OnInit, OnDestroy {
               private roomService: RoomService,
               private elementRef: ElementRef) {
   }
-  // timeLeft: number = 60;
-  // interval: any;
-  //
-  // startTimer() {
-  //   this.interval = setInterval(() => {
-  //     if(this.timeLeft > 0) {
-  //       this.timeLeft--;
-  //     } else {
-  //       this.timeLeft = 60;
-  //     }
-  //   },1000)
-  // }
-  //
-  // pauseTimer() {
-  //   clearInterval(this.interval);
-  // }
 
 
   ngOnInit(): void {
     console.log('ceva');
     RoomComponent.timer = 10;
+    RoomComponent.round = RoomComponent.round + 1;
+    console.log('round= ' + RoomComponent.round);
+    if (RoomComponent.round === 1) {
+      this.selectedQuestion = this.question1;
+      this.selectedTypes = this.types1;
+      this.selectedAnswer = this.correctAnswer1;
+    } else if (RoomComponent.round === 2) {
+      this.selectedQuestion = this.question2;
+      this.selectedTypes = this.types2;
+      this.selectedAnswer = this.correctAnswer2;
+    } else if (RoomComponent.round === 3) {
+      this.selectedQuestion = this.question3;
+      this.selectedTypes = this.types3;
+      this.selectedAnswer = this.correctAnswer3;
+    }
     this.seconds = 0;
     this.minutes = 0;
     this.timeLeft = 50;
@@ -76,7 +87,6 @@ export class RoomComponent implements OnInit, OnDestroy {
       console.log(RoomComponent.timer);
       --RoomComponent.timer;
       if (RoomComponent.timer < 0) {
-        // this.timer = 14;
         this.router.navigate(['/round', this.name]);
       }
     })
