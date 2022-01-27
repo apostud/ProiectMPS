@@ -8,6 +8,7 @@ import {StartPageComponent} from "./components/start-page/start-page.component";
 import {CreatePrivateRoomComponent} from "./components/create-private-room/create-private-room.component";
 import {NewRoomComponent} from "./components/new-room/new-room.component";
 import {RoundComponent} from "./components/round/round.component";
+import {RoomSettingsComponent} from "./components/room-settings/room-settings.component";
 const routes: Routes = [
   {
     path: 'login',
@@ -25,6 +26,9 @@ const routes: Routes = [
     path: 'room/:name',
     component: RoomComponent
   },
+  {
+    path: `roomSettings/:name`,
+    component: RoomSettingsComponent},
   {
     path: 'start',
     component: StartPageComponent,

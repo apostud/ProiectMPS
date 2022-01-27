@@ -17,6 +17,11 @@ router.get('/:id', (req, res) => {
         .then(room => res.json({password: room.password }))
         .catch(err => res.status(404).json(err));
 });
+router.get('/name/:name', (req, res) => {
+    Room.findOne({ name: req.params.name })
+        .then(room => res.json(room))
+        .catch(err => res.status(404).json(err));
+});
 
 router.post('/', (req, res) => {
     const {name, pass, type, admin, currentNo, maxNo, isExtended, players, score, audienceNo, round} = req.body;
@@ -31,7 +36,7 @@ router.post('/', (req, res) => {
 router.put('/', (req, res) => {
     const roomId = req.body.name;
 
-    Room.findOneAndUpdate(req.body.name, { $set: req.body })
+    Room.findOneAndUpdate({name : req.body.name}, { $set: req.body })
         .then(() => res.json('Room updated!'))
         .catch(() => res.status(404).json('Room not found!'));
 });

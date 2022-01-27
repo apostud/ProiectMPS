@@ -30,6 +30,23 @@ export class RoomComponent implements OnInit, OnDestroy {
               private roomService: RoomService,
               private elementRef: ElementRef) {
   }
+  // timeLeft: number = 60;
+  // interval: any;
+  //
+  // startTimer() {
+  //   this.interval = setInterval(() => {
+  //     if(this.timeLeft > 0) {
+  //       this.timeLeft--;
+  //     } else {
+  //       this.timeLeft = 60;
+  //     }
+  //   },1000)
+  // }
+  //
+  // pauseTimer() {
+  //   clearInterval(this.interval);
+  // }
+
 
   ngOnInit(): void {
     console.log('ceva');
@@ -72,5 +89,59 @@ export class RoomComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.intervalSubscription?.unsubscribe();
   }
+  exit() : void {
+    let room;
+    if(!localStorage.getItem("room")) {
+      this.roomService.getRoomByName(this.router.url.split('/')[2]).subscribe((data:any) => {
+        room = data.body;
+        let user = JSON.parse(localStorage.getItem("user")!)._id;
+        if(room.admin == user) {
+          this.roomService.getRoomByName(room.name).subscribe((data:any) => {
+            let room2 = data.body;
+            console.log(data.body);
+            console.log(room2.players)
+            for(let player of room2.players) {
+              if(user != player) {
+                 room2.admin = player;
+                 this.roomService.updateRoom(room2).subscribe();
+              }
+            }
+          })
+        }
+        localStorage.removeItem("room");
+        this.router.navigate(['/start']);
+      })
+    } else {
+      console.log(localStorage.getItem("room"))
+      room = JSON.parse(localStorage.getItem("room")!);
+      let user = JSON.parse(localStorage.getItem("user")!)._id;
+      if(room.admin == user) {
+        this.roomService.getRoomByName(room.name).subscribe((data:any) => {
+          let room2 = data.body;
+          console.log(data.body);
+          console.log(room2.players)
+          for(let player of room2.players) {
+            if(user != player) {
+               room2.admin = player;
+               this.roomService.updateRoom(room2).subscribe();
+            }
+          }
+        })
+      }
+      localStorage.removeItem("room");
+      this.router.navigate(['/start']);
+    }
 
+  }
+  settings() : void {
+    if (!localStorage.getItem("room")) {
+      this.roomService.getRoomByName(this.router.url.split('/')[2]).subscribe((data: any) => {
+        localStorage.setItem("room", data.body)
+        this.router.navigate([`/roomSettings/` + data.body.name])
+      })
+
+    } else {
+      this.router.navigate([`/roomSettings/` + JSON.parse(localStorage.getItem("room")!).name]);
+    }
+  }
 }

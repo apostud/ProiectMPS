@@ -50,7 +50,9 @@ export class NewRoomComponent implements OnInit {
       room.pass='-';
     }
     console.log(room.type)
-    this.roomService.addRoom(room).subscribe(() => {
+    this.roomService.addRoom(room).subscribe((data:any) => {
+     // localStorage.setItem("room",data.body )
+      localStorage.removeItem("room");
       this.router.navigate(['/room', room.name]);
     });
   }

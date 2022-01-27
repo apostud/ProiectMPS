@@ -1,6 +1,11 @@
+<!--<div class="black" *ngIf="nextRound()" >  <p>Next Round</p> </div>-->
+<!--<div class="black" *ngIf="!nextRound()" >  <p>Next Round</p> </div>-->
 <div class = "room">
   <div class="header">
     <h5><span id="time" class="text-primary">00:00</span></h5>
+    <button class="login btn btn-default" (click)="exit()">EXIT</button>
+    <button class="details btn btn-default" (click)="settings()">ROOM SETTINGS</button>
+
   </div>
   <a class="question"> Care este capitala Romaniei? </a>
 

@@ -40,10 +40,11 @@ export class StartPageComponent implements OnInit {
       this.user.isAdmin = false;
       this.user.role = "PLAYER";
       this.user.email = this.user.fullName;
-      localStorage.setItem('user', JSON.stringify(this.user))
 
       console.log(this.user)
-      this.roomService.addUser(this.user).subscribe();
+      this.roomService.addUser(this.user).subscribe((data:any)=> {
+        localStorage.setItem('user',JSON.stringify(data.body.user))
+      });
     }
 
     //decomenteaza dupa ce rezolvi url
@@ -67,6 +68,7 @@ export class StartPageComponent implements OnInit {
         room.score?.push(0);
         room.audienceNo  = room.audienceNo! + 1;
         this.roomService.updateRoom(room).subscribe(()=> {
+          localStorage.setItem("room", JSON.stringify(room));
           this.router.navigate(['/room', room.name]);
         });
       });
@@ -80,6 +82,7 @@ export class StartPageComponent implements OnInit {
     room.currentNo =   room.currentNo! + 1;
        console.log(JSON.parse(localStorage.getItem("user")!)._id)
         this.roomService.updateRoom(room).subscribe(()=> {
+          localStorage.setItem("room", JSON.stringify(room));
           this.router.navigate(['/room', room.name]);
         });
   }
@@ -90,6 +93,6 @@ export class StartPageComponent implements OnInit {
 
   clickLogOut(): void {
     localStorage.removeItem('user');
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
 }

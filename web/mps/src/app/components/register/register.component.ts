@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {User} from "../../entities/user";
 import {RoomService} from "../../services/room.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -19,7 +20,7 @@ export class RegisterComponent implements OnInit {
     retypePassword: new FormControl('')
   });
 
-  constructor(private roomService: RoomService) { }
+  constructor(private router:Router, private roomService: RoomService) { }
 
   ngOnInit(): void {
   }
@@ -51,7 +52,9 @@ export class RegisterComponent implements OnInit {
       user.role = "PLAYER";
       user.isAdmin = false;
       user.isActive = false;
-      this.roomService.addUser(user).subscribe((data:any) => console.log(data.body));
+      this.roomService.addUser(user).subscribe((data:any) => {
+        this.router.navigate(['/login']);
+      });
     }
 
   }

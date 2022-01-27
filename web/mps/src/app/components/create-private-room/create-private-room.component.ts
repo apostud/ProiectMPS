@@ -46,6 +46,7 @@ export class CreatePrivateRoomComponent implements OnInit {
       room2.score?.push(0);
       room2.currentNo =   room2.currentNo + 1;
       this.service.updateRoom(room2).subscribe(()=> {
+        localStorage.setItem("room", JSON.stringify(room2));
         this.router.navigate(['/room', room2.name]);
       });
 
@@ -75,6 +76,7 @@ export class CreatePrivateRoomComponent implements OnInit {
         room2.score?.push(0);
         room2.audienceNo  = room2.audienceNo! + 1;
         this.service.updateRoom(room2).subscribe(()=> {
+          localStorage.setItem("room", JSON.stringify(room2));
           this.router.navigate(['/room', room2.name])
         });
       });
