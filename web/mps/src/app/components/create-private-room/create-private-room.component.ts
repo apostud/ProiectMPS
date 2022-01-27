@@ -69,7 +69,7 @@ export class CreatePrivateRoomComponent implements OnInit {
     this.service.getRoom(room).subscribe((res: any) => {
       let room2 = res.body;
       let user = JSON.parse(localStorage.getItem('user')!);
-      user.type = "spectator";
+      user.type = "SPECTATOR";
       this.service.updateUser(user).subscribe((data:any)=> {
         room2.players?.push(JSON.parse(localStorage.getItem("user")!)._id);
 

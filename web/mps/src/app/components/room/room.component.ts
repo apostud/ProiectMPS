@@ -42,6 +42,22 @@ export class RoomComponent implements OnInit, OnDestroy {
               private roomService: RoomService,
               private elementRef: ElementRef) {
   }
+  // timeLeft: number = 60;
+  // interval: any;
+  //
+  // startTimer() {
+  //   this.interval = setInterval(() => {
+  //     if(this.timeLeft > 0) {
+  //       this.timeLeft--;
+  //     } else {
+  //       this.timeLeft = 60;
+  //     }
+  //   },1000)
+  // }
+  //
+  // pauseTimer() {
+  //   clearInterval(this.interval);
+  // }
 
 
   ngOnInit(): void {
@@ -70,7 +86,7 @@ export class RoomComponent implements OnInit, OnDestroy {
       this.room = data.body;
     });
     var callDuration = this.elementRef.nativeElement.querySelector('#time');
-    console.log(typeof(callDuration));
+    // console.log(typeof(callDuration));
     this.startTimer(callDuration);
   }
 
@@ -84,16 +100,30 @@ export class RoomComponent implements OnInit, OnDestroy {
       this.seconds = RoomComponent.timer < 10 ? "0" + RoomComponent.timer : RoomComponent.timer;
 
       display.textContent = this.minutes + ":" + this.seconds;
-      console.log(RoomComponent.timer);
+      // console.log(RoomComponent.timer);
       --RoomComponent.timer;
       if (RoomComponent.timer < 0) {
+        // this.timer = 14;
         this.router.navigate(['/round', this.name]);
       }
     })
   }
 
   clickCheck(): void {
-    console.log(this.typesForm.value.type);
+    let checkRoom;
+    this.roomService.getRoomByName(this.router.url.split('/')[2]).subscribe((data:any)=> {
+      checkRoom = data.body;
+      let idx = checkRoom.players.indexOf(JSON.parse(localStorage.getItem("user")!)._id);
+
+        if(this.typesForm.value.type === this.correctAnswer1 ||
+          this.typesForm.value.type === this.correctAnswer2  ||
+          this.typesForm.value.type == this.correctAnswer3 ) {
+          checkRoom.score[idx] += RoomComponent.timer;
+          this.roomService.updateRoom(checkRoom).subscribe();
+        }
+
+    })
+    // console.log(this.typesForm.value.type);
   }
 
   ngOnDestroy(): void {
@@ -108,8 +138,8 @@ export class RoomComponent implements OnInit, OnDestroy {
         if(room.admin == user) {
           this.roomService.getRoomByName(room.name).subscribe((data:any) => {
             let room2 = data.body;
-            console.log(data.body);
-            console.log(room2.players)
+            // console.log(data.body);
+            // console.log(room2.players)
             for(let player of room2.players) {
               if(user != player) {
                  room2.admin = player;
@@ -122,14 +152,14 @@ export class RoomComponent implements OnInit, OnDestroy {
         this.router.navigate(['/start']);
       })
     } else {
-      console.log(localStorage.getItem("room"))
+      // console.log(localStorage.getItem("room"))
       room = JSON.parse(localStorage.getItem("room")!);
       let user = JSON.parse(localStorage.getItem("user")!)._id;
       if(room.admin == user) {
         this.roomService.getRoomByName(room.name).subscribe((data:any) => {
           let room2 = data.body;
-          console.log(data.body);
-          console.log(room2.players)
+          // console.log(data.body);
+          // console.log(room2.players)
           for(let player of room2.players) {
             if(user != player) {
                room2.admin = player;

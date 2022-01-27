@@ -61,7 +61,7 @@ export class StartPageComponent implements OnInit {
   clickPlaySpectator(room: Room): void {
 
      let user = JSON.parse(localStorage.getItem('user')!);
-      user.type = "spectator";
+      user.type = "SPECTATOR";
     this.roomService.updateUser(user).subscribe((data:any)=> {
         room.players?.push(JSON.parse(localStorage.getItem("user")!)._id);
 

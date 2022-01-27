@@ -36,7 +36,7 @@ router.post('/', (req, res) => {
         .catch(err => res.status(400).json(err));
 });
 
-router.get("/:id", (req, res) => {
+router.get("/id/:id", (req, res) => {
     User.findById(req.params.id)
         .select('-password')
         .then(player => res.json(player))
