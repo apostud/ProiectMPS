@@ -7,7 +7,7 @@
     <button class="details btn btn-default" (click)="settings()">ROOM SETTINGS</button>
 
   </div>
-  <a class="question"> {{selectedQuestion}} </a>
+  <a class="question"> {{selectedQuestionHtml}} </a>
 
   <div class="elem-check" [formGroup]="typesForm">
     <mat-radio-group formControlName="type" class="buttons-group">

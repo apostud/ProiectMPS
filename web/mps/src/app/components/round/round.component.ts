@@ -15,14 +15,22 @@ export class RoundComponent implements OnInit {
   room? : Room;
   name? : string
 
-  backToMenu: boolean = false;
+  answer: string | undefined;
+  question: string | undefined;
 
+  backToMenu: boolean = false;
+  round: number | undefined;
   players: User[] = []
   score: number[] = []
+  backUsers: User[] | null = [];
   scoreSpec = 0;
+
   constructor(private router: Router, private roomService: RoomService) { }
 
   ngOnInit(): void {
+    this.question = RoomComponent.selectedQuestion;
+    this.answer = RoomComponent.selectedAnswer;
+    this.round = RoomComponent.round;
     if (RoomComponent.round === 3) {
       this.backToMenu = true;
     }
@@ -31,17 +39,27 @@ export class RoundComponent implements OnInit {
      this.room = data.body;
      let ok = 0;
      let ok2= 0;
-     for(let player of this.room?.players!) {
-        if(player.role == "PLAYER") {
-          this.players.push(player);
-          this.score.push(this.room?.score![ok]!);
-        } else if (player.role == "SPECTATOR"){
-          this.scoreSpec += this.room?.score![ok]!;
-          ok2++;
+     this.roomService.getUsers().subscribe(res => {
+       this.backUsers = res.body;
+       for(let user of this.backUsers!) {
+         for (let player of this.room?.players!) {
+           if (JSON.parse(JSON.stringify(user))._id === player){
+             if(user.role === "PLAYER") {
+               this.players.push(user);
+               this.score.push(this.room?.score![ok]!);
+             } else if (user.role === "SPECTATOR"){
+               this.scoreSpec += this.room?.score![ok]!;
+               ok2++;
+             }
+             ok++;
+           }
+         }
         }
-        ok++;
+     });
+     console.log(this.players);
+     if (ok2 > 0) {
+       this.score.push(Math.floor(this.scoreSpec/ok2));
      }
-     this.score.push(Math.floor(this.scoreSpec/ok2));
       this.startTimer();
    })
   }

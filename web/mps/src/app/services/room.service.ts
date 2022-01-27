@@ -29,10 +29,12 @@ export class RoomService {
     return this.http.get<Room>('http://localhost:5000/api/rooms/name/' + name, {params, observe:'response'})
       .pipe(map((res: EntityResponseType) => res));
   }
-  public getUserById(user :User) : Observable<EntityResponseType> {
-    const params = new HttpParams().set('id', JSON.parse(JSON.stringify(user))._id);
-    return this.http.get<Room>('http://localhost:5000/api/players/id/' + JSON.parse(JSON.stringify(user))._id, {params, observe:'response'})
-      .pipe(map((res: EntityResponseType) => res));
+
+  public getUserById(id :  any) : Observable<HttpResponse<User>> {
+    const params = new HttpParams().set('id', id);
+    let user = new User();
+    return this.http.post<User>('http://localhost:5000/api/players/id/', user, {params, observe:'response'})
+      .pipe(map((res: HttpResponse<User>) => res));
   }
   public addUser(user: User) : any {
     console.log(user)
@@ -52,7 +54,6 @@ export class RoomService {
     return this.http.get<User>('http://localhost:5000/api/players/' + email, {observe:'response'})
       .pipe(map((res: HttpResponse<User>) => res));
   }
-
 
   public getRoomById(id: string) : Observable<HttpResponse<Room>> {
     const params = new HttpParams().set('id', id);

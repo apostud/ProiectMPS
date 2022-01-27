@@ -36,11 +36,16 @@ router.post('/', (req, res) => {
         .catch(err => res.status(400).json(err));
 });
 
-router.get("/id/:id", (req, res) => {
-    User.findById(req.params.id)
-        .select('-password')
-        .then(player => res.json(player))
-        .catch(err => res.status(404).json(err));
+router.post("/id", (req, res) => {
+    const userId = req.params.name;
+    // const query = {
+    //     $and: [
+    //         { name : userId }
+    //     ]
+    // }
+    User.findOne({  userId })
+        .then(rooms => res.json(rooms))
+        .catch((err) => res.status(404).json(err));
 });
 
 router.put('/', (req, res) => {

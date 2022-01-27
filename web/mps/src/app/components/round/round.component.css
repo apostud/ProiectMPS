@@ -4,20 +4,20 @@
   color : white;
 }
 .nr {
-  font-size: 40px;
-  color: #f1f1f1;
+  font-size: 55px;
+  color: #c4c4c4;
   font-family: "Lucida Console", "Courier New", monospace;
-  margin-left: 30%;
-  padding-top: 300px;
-  text-shadow: 2px 2px 5px red;
+  margin-left: 45%;
+  /*padding-top: 300px;*/
+  /*text-shadow: 2px 2px 5px red;*/
 
 }
 .room {
   font-size: 40px;
-  color: #f1f1f1;
+  color: #c4c4c4;
   font-family: "Lucida Console", "Courier New", monospace;
-  margin-left: 30%;
-  text-shadow: 2px 2px 5px red;
+  margin-left: 37%;
+  /*text-shadow: 2px 2px 5px red;*/
   padding-top: 20px;
 
 }
@@ -28,12 +28,13 @@
   flex:1;
 }
 .clasament {
-  font-size: 40px;
+  font-size: 60px;
   color: #f1f1f1;
   font-family: "Lucida Console", "Courier New", monospace;
-  margin-left: 10%;
-  text-shadow: 2px 2px 5px red;
-  padding-top: 100px;
+  margin-left: 41%;
+  /*text-shadow: 2px 2px 5px red;*/
+  /*padding-top: 100px;*/
+  margin-top: 50px;
 
 }
 .row {
@@ -54,4 +55,33 @@
   border-radius: 5px;
   text-align: center;
   font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.line {
+  height:1px;
+  /*width: 50px;*/
+  border-width:0;
+  color: rgba(95, 93, 93, 0.44);
+  background-color: rgba(95, 93, 93, 0.44);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 50%;
+  margin-right: 10%;
+}
+
+.separate-player {
+  /*width: 20%;*/
+  margin-left: 52%;
+  color: white;
+  font-size: 25px;
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-weight: bold;
+}
+
+.question-class {
+  color: white;
+}
+
+.answer-class {
+  color: white;
 }

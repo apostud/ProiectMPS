@@ -1,15 +1,20 @@
 <div class = "round">
-<!--  <div>Round {{room!.round}}</div>-->
-<!--  <div>Room {{room!.name}}</div>-->
   <button mat-raised-button *ngIf="backToMenu === true" class="back-to-menu" (click)="clickBackToMenu()"> Back to menu</button>
 
   <div class="row">
     <div class="col-sm-4">
-      <div class="nr">Round</div>
-      <div class="room">Room</div>
-    </div>
-    <div class = "col-sm-8">
-      <div class = "clasament">CLASAMENT:</div>
+      <div class="room">Room: {{name}}</div>
+      <div class="nr">Round: {{round}}</div>
+      <a class = "clasament">CLASAMENT:</a>
+      <div class="players" *ngFor="let player of players">
+        <hr class="line">
+        <div class="separate-player">{{player.fullName}} :    {{score[players.indexOf(player)]}}</div>
+        <hr class="line">
+      </div>
+<!--      <div>-->
+<!--        <a class="question-class">{{question}}</a>-->
+<!--        <a class="answer-class">Answer: {{answer}}</a>-->
+<!--      </div>-->
     </div>
   </div>
 </div>
